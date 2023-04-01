@@ -3,10 +3,12 @@ import {
   EventEmitter,
   forwardRef,
   Input,
+  OnInit,
   Output,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import * as uuid from 'uuid';
+
+import { UniqueIdService } from './../../../service/unique-id.service';
 
 @Component({
   selector: 'app-yes-no-button-group',
@@ -20,7 +22,7 @@ import * as uuid from 'uuid';
     },
   ],
 })
-export class YesNoButtonGroupComponent implements ControlValueAccessor {
+export class YesNoButtonGroupComponent implements ControlValueAccessor, OnInit {
   id: string = '';
   @Input() value: string = '';
   @Input() label: string = '';
@@ -30,8 +32,12 @@ export class YesNoButtonGroupComponent implements ControlValueAccessor {
 
   options = YesNoButtonGroupOptions;
 
-  constructor() {
-    this.id = `yes-no-button-group-${uuid.v1()}`;
+  constructor(private uniqueIdService: UniqueIdService) {}
+
+  ngOnInit(): void {
+    this.id = this.uniqueIdService.generateUniqueIdWithPrefix(
+      'yes-no-button-group'
+    );
   }
 
   writeValue(value: any): void {
