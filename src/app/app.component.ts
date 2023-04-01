@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      yesNoAnswer: [null],
+      yesNoAnswer: ['no'],
     });
   }
 

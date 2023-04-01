@@ -1,6 +1,7 @@
-<div class="button-group" role="radiogroup" [attr.aria-labelledby]="id">
+<div appKeyM class="button-group" role="radiogroup" [attr.aria-labelledby]="id">
   <label class="label" [attr.id]="id"> {{ label }} </label>
   <button
+    appKeyMItem
     role="radio"
     [attr.aria-checked]="value === options.YES"
     [attr.tabindex]="value === options.YES || value === null ? 0 : -1"
@@ -12,6 +13,7 @@
     Yes
   </button>
   <button
+    appKeyMItem
     role="radio"
     [attr.aria-checked]="value === options.NO"
     [attr.tabindex]="value === options.NO || value === null ? 0 : -1"
