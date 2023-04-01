@@ -1,4 +1,26 @@
-<div appKeyM class="button-group" role="radiogroup" [attr.aria-labelledby]="id">
+<div class="button-group" role="radiogroup" [attr.aria-label]="label">
+  <label> {{ label }} </label>
+  <div class="radio">
+    <input
+      type="radio"
+      [attr.id]="id + '-yes'"
+      [attr.name]="id"
+      [attr.checked]="value === options.YES"
+      (change)="activate(options.YES)"
+    />
+    <label [attr.for]="id + '-yes'" class="button button-yes"> Yes </label>
+    <input
+      type="radio"
+      [attr.id]="id + '-no'"
+      [attr.name]="id"
+      [attr.checked]="value === options.NO"
+      (change)="activate(options.NO)"
+    />
+    <label [attr.for]="id + '-no'" class="button button-no"> No </label>
+  </div>
+</div>
+
+<!-- <div appKeyM class="button-group" role="radiogroup" [attr.aria-labelledby]="id">
   <label class="label" [attr.id]="id"> {{ label }} </label>
   <button
     appKeyMItem
@@ -28,4 +50,4 @@
   >
     No
   </button>
-</div>
+</div> -->
