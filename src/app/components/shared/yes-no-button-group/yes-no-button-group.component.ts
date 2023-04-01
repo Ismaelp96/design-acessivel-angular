@@ -23,12 +23,13 @@ import { UniqueIdService } from './../../../service/unique-id.service';
   ],
 })
 export class YesNoButtonGroupComponent implements ControlValueAccessor, OnInit {
-  id: string = '';
   @Input() value: string = '';
   @Input() label: string = '';
+  @Input() disabled: boolean = false;
   @Output() valueChange = new EventEmitter<string>();
   onChange = (value: string) => {};
   onTouched = () => {};
+  id: string = '';
 
   options = YesNoButtonGroupOptions;
 
@@ -54,7 +55,9 @@ export class YesNoButtonGroupComponent implements ControlValueAccessor, OnInit {
     this.onTouched = fn;
   }
 
-  setDisabledState?(isDisabled: boolean): void {}
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
 
   activate(value: string): void {
     this.writeValue(value);
